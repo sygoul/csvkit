@@ -191,6 +191,12 @@ class CSVKitUtility(object):
         if 'l' not in self.override_flags:
             self.argparser.add_argument('-l', '--linenumbers', dest='line_numbers', action='store_true',
                                 help='Insert a column of line numbers at the front of the output. Useful when piping to grep or as a simple primary key.')
+        if 'outtabs' not in self.override_flags:
+            self.argparser.add_argument('--outtabs', dest='outtabs', action='store_true',
+                                help='Specifies that the output CSV file will be delimited with tabs. Overrides "--outdelimiter".')
+        if 'outdelimiter' not in self.override_flags:
+            self.argparser.add_argument('--outdelimiter', dest='outdelimiter',
+                                help='Delimiting character of the output CSV file.')
 
         # Input/Output
         if 'zero' not in self.override_flags:
@@ -240,6 +246,11 @@ class CSVKitUtility(object):
 
         if 'l' not in self.override_flags and self.args.line_numbers:
             kwargs['line_numbers'] = True
+
+        if self.args.outtabs:
+            kwargs['delimiter'] = '\t'
+        elif self.args.outdelimiter:
+            kwargs['delimiter'] = self.args.outdelimiter
 
         return kwargs
 

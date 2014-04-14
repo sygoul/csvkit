@@ -44,6 +44,7 @@ setup(
             'csvsql = csvkit.utilities.csvsql:launch_new_instance',
             'csvstack = csvkit.utilities.csvstack:launch_new_instance',
             'csvstat = csvkit.utilities.csvstat:launch_new_instance',
+            'csvfreq = csvkit.utilities.csvfreq:launch_new_instance',
             'in2csv = csvkit.utilities.in2csv:launch_new_instance',
             'sql2csv = csvkit.utilities.sql2csv:launch_new_instance'
         ]
